@@ -1,0 +1,196 @@
+Building configuration...
+
+Current configuration : 4249 bytes
+!
+! Last configuration change at 08:07:53 UTC Wed Jul 15 2026 by admin
+!
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console virtual
+!
+hostname SEBASTIAN-GONZALEZ
+!
+boot-start-marker
+boot-end-marker
+!
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+ip domain name devasc.local
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3956268988
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3956268988
+ revocation-check none
+ rsakeypair TP-self-signed-3956268988
+!
+!
+crypto pki certificate chain TP-self-signed-3956268988
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33393536 32363839 3838301E 170D3236 30363139 30303034 
+  32375A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 39353632 
+  36383938 38308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 01009926 E0F45746 C49BE46C 4FAE1C49 7A77D060 03BA3B6F B7BBE762 
+  34BD4A76 2DEBD389 A587DC04 F5ADD752 109BDE61 80AD1CF3 CBBD171F 2844788E 
+  B0144394 B53760A6 C412A2E4 E3081434 DB3B5731 1548937C 922BCA11 251FB086 
+  09EC90EA 6AE1B802 B945E6B1 F964BE44 2E00C479 F6DE5A46 ADC58C66 0B16F2A3 
+  FD34A889 B5D46EA4 219F26FD CF89BF5E 310E0B4A F7C157C7 8F81DA38 7D430628 
+  00538E7A 10DB1387 5768D05C C0204C56 9ABA3664 C5CB16FD 202BB1CC D07AA358 
+  A60AA886 E6017F24 177DA8E3 86B6D482 F6D7B2AD 76149F29 270C2D60 81D2F4C0 
+  AF515919 2DF314BB C249AD4C A0BA1A41 4750FF77 76BFDB21 656178F2 AAC6BA64 
+  80E9ACD4 5D410203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 1492EC1A 3E985E90 5B769D66 86032AF3 86D8EF78 
+  4A301D06 03551D0E 04160414 92EC1A3E 985E905B 769D6686 032AF386 D8EF784A 
+  300D0609 2A864886 F70D0101 05050003 82010100 50A9F5AF E2AC2F6F F2BB8A5E 
+  C273694D 4351FA0E 14F01495 2201F1A5 EB64CB83 74155928 FE6E1389 75C4CBEE 
+  2142DB65 DDF5E623 F1F46897 B9C81270 06BA6B0B 5B5326A1 D08FCDA3 BE9C27D5 
+  335C960E 57683335 96D0A055 5C039E9E A342A53A 8F3F6209 66CE0FE0 B24E0398 
+  9EC78695 B184A862 1CAEE723 F9594203 493FD545 022FCE44 4768BC47 CC86A91F 
+  E1967C58 DB985AF9 AC0CD80E B9CDDCDA 5BDD9152 90872B06 DF2DC048 AB759D3D 
+  EA174BA6 027A4C0A 88D9FF28 7D4E4C4E C3BF2946 B27AA6E3 24BB4FAB B0CE5C1B 
+  62D4F71C A8F7DFEE 1B272D9F 8DA5BA73 139DE672 A3D3A2C5 FCCB86DA EE3E95E0 
+  700FBC6A 9D762BA4 DF87555B A83D1C7F 6210EA75
+  	quit
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9XASQX7PZ95
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+netconf-yang
+!
+restconf
+!
+username cisco privilege 15 password 0 cisco123!
+username admin privilege 15 secret 5 $1$trY.$6QHHtdymnJMlqRGfqljGy.
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface Loopback33
+ description Loopback creada con Ansible
+ no ip address
+ ipv6 address FE80::1 link-local
+ ipv6 address 3001:ABCD:ABCD:1::1/128
+!
+interface GigabitEthernet1
+ ip address dhcp
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+ip forward-protocol nd
+no ip http server
+ip http secure-server
+!
+ip ssh version 2
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+banner motd ^C
+*                                           *
+**                                         **
+***                                       ***
+***  Cisco Networking Academy             ***
+***   Emerging Technologies Workshop:     ***
+***    Model Driven Programmability       ***
+***                                       ***
+***  This software is provided for        ***
+***   Educational Purposes                ***
+***    Only in Networking Academies       ***
+***                                       ***
+**                                         **
+*                                           *
+^C
+!
+line con 0
+ stopbits 1
+line vty 0
+ login local
+ transport input ssh
+line vty 1
+ login local
+ length 0
+ transport input ssh
+line vty 2 4
+ login local
+ transport input ssh
+!
+!
+!
+!
+!
+!
+end

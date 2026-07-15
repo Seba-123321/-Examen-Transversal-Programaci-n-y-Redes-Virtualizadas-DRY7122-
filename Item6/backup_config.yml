@@ -1,0 +1,17 @@
+---
+- name: Backup configuracion CSR1000v
+  hosts: cisco
+  gather_facts: no
+
+  tasks:
+
+    - name: Obtener running-config
+      ios_command:
+        commands:
+          - show running-config
+      register: config
+
+    - name: Guardar respaldo
+      copy:
+        content: "{{ config.stdout[0] }}"
+        dest: "./backup_router.txt"
