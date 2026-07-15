@@ -1,0 +1,78 @@
+from flask import Flask, request
+import sqlite3
+import hashlib
+
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def inicio():
+
+    return """
+    <h1>Sistema de usuarios DRY7122</h1>
+
+    <form method="post" action="/login">
+
+    Usuario:
+    <input name="usuario">
+
+    <br>
+
+    Password:
+    <input name="password" type="password">
+
+    <br>
+
+    <input type="submit">
+
+    </form>
+    """
+
+
+@app.route("/login", methods=["POST"])
+def login():
+
+    usuario = request.form["usuario"]
+
+    password = request.form["password"]
+
+
+    password_hash = hashlib.sha256(
+        password.encode()
+    ).hexdigest()
+
+
+    conexion = sqlite3.connect("usuarios.db")
+
+    cursor = conexion.cursor()
+
+
+    cursor.execute(
+        "SELECT * FROM usuarios WHERE nombre=? AND password=?",
+        (usuario,password_hash)
+    )
+
+
+    resultado = cursor.fetchone()
+
+
+    conexion.close()
+
+
+    if resultado:
+
+        return "Usuario valido"
+
+
+    else:
+
+        return "Usuario incorrecto"
+
+
+
+app.run(
+    host="0.0.0.0",
+    port=5800
+)
+

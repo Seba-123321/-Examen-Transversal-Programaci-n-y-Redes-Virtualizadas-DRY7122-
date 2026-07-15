@@ -17,7 +17,6 @@ CREATE TABLE IF NOT EXISTS usuarios(
 
 
 usuarios = [
-    ("Alejandro", "1234"),
     ("Sebastian", "5678"),
     ("Gonzalez", "abcd")
 ]
